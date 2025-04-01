@@ -1,0 +1,37 @@
+<section class="modal">
+    <h1 mat-dialog-title>Viajante</h1>
+    <mat-dialog-content>
+        <div class="age-select">
+            <ul>
+                <li>Adultos</li>
+                <li>(Acima de 12 anos)</li>
+                <li>
+                    <app-control-button operation="decrement"></app-control-button>
+                    <span>1</span>
+                    <app-control-button operation="increment"></app-control-button>
+                </li>
+            </ul>
+            <ul>
+                <li>Crianças</li>
+                <li>(Acima de 12 anos)</li>
+                <li>
+                    <app-control-button operation="decrement"></app-control-button>
+                    <span>1</span>
+                    <app-control-button operation="increment"></app-control-button>
+                </li>
+            </ul>
+            <ul>
+                <li>Bebês</li>
+                <li>(Até 2 anos)</li>
+                <li>
+                    <app-control-button operation="decrement"></app-control-button>
+                    <span>1</span>
+                    <app-control-button operation="increment"></app-control-button>
+                </li>
+            </ul>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+</section>
