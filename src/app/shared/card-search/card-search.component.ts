@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Promotion } from 'src/app/core/types/types';
 
 @Component({
   selector: 'app-card-search',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-search.component.scss']
 })
 export class CardSearchComponent {
-
-}
+  @Input() promotion!: Promotion;
+} 

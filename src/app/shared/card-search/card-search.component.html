@@ -1,9 +1,9 @@
 <mat-card class="card-search" appearance="outlined">
-    <img mat-card-image src="assets/imagens/Veneza.png" alt="Veneza">
+    <img mat-card-image [src]="promotion.imagem" [alt]="promotion.destino">
     <mat-card-content>
         <ul>
-            <li>Veneza</li>
-            <li>R$ 1.500,00</li>
+            <li>{{ promotion.destino }}</li>
+            <li>R$ {{ promotion.preco }}</li>
         </ul>
     </mat-card-content>
     <mat-card-actions>

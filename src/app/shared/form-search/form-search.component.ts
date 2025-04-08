@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
+import { FormSearchService } from 'src/app/core/services/form-search.service';
 
 @Component({
   selector: 'app-form-search',
@@ -8,9 +9,11 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./form-search.component.scss']
 })
 export class FormSearchComponent {
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    public formSearchService: FormSearchService
+  ) { }
 
-  openDialog() {
-    this.dialog.open(ModalComponent);
+  search() {
+    console.log(this.formSearchService.formSearch.value);
   }
 }

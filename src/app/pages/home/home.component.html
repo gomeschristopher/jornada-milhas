@@ -3,18 +3,10 @@
     <h2>Promoções</h2>
     <app-form-search></app-form-search>
     <div class="card-wrapper">
-        <app-card-search></app-card-search>
-        <app-card-search></app-card-search>
-        <app-card-search></app-card-search>
-        <app-card-search></app-card-search>
+        <app-card-search *ngFor="let promotion of promotions" [promotion]="promotion"></app-card-search>
     </div>
     <h2>Depoimentos</h2>
     <div class="card-wrapper">
-        <app-card-testimony testimony="Amei a experiência de comprar milhas com a Milhas & Companhia. Super recomendo!"
-            author="Ana Paula"></app-card-testimony>
-        <app-card-testimony testimony="Amei a experiência de comprar milhas com a Milhas & Companhia. Super recomendo!"
-            author="Ana Paula"></app-card-testimony>
-        <app-card-testimony testimony="Amei a experiência de comprar milhas com a Milhas & Companhia. Super recomendo!"
-            author="Ana Paula"></app-card-testimony>
+        <app-card-testimony *ngFor="let testimony of testimonials" [testimonial]="testimony"></app-card-testimony>
     </div>
 </app-container>

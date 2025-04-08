@@ -2,36 +2,21 @@
     <h1 mat-dialog-title>Viajante</h1>
     <mat-dialog-content>
         <div class="age-select">
-            <ul>
-                <li>Adultos</li>
-                <li>(Acima de 12 anos)</li>
-                <li>
-                    <app-control-button operation="decrement"></app-control-button>
-                    <span>1</span>
-                    <app-control-button operation="increment"></app-control-button>
-                </li>
-            </ul>
-            <ul>
-                <li>Crianças</li>
-                <li>(Acima de 12 anos)</li>
-                <li>
-                    <app-control-button operation="decrement"></app-control-button>
-                    <span>1</span>
-                    <app-control-button operation="increment"></app-control-button>
-                </li>
-            </ul>
-            <ul>
-                <li>Bebês</li>
-                <li>(Até 2 anos)</li>
-                <li>
-                    <app-control-button operation="decrement"></app-control-button>
-                    <span>1</span>
-                    <app-control-button operation="increment"></app-control-button>
-                </li>
-            </ul>
+            <app-passenger-selector [formControl]="formSearchService.getControl('adults')" title="Adultos" subtitle="(Acima de 12 anos)"></app-passenger-selector>
+            <app-passenger-selector [formControl]="formSearchService.getControl('children')" title="Crianças" subtitle="(Entre 2 e 11 anos)"></app-passenger-selector>
+            <app-passenger-selector [formControl]="formSearchService.getControl('babies')" title="Bebês" subtitle="(Até 2 anos)"></app-passenger-selector>
+        </div>
+        <div class="select-category">
+            <p><strong>Categoria</strong></p>
+            <mat-chip-listbox>
+                <mat-chip-option value="Econômica" [selected]="formSearchService.formSearch.get('tipo')?.value == 'Econômica'"
+                (selectionChange)="formSearchService.changeType($event, 'Econômica')">Econômica</mat-chip-option>
+                <mat-chip-option value="Executiva" [selected]="formSearchService.formSearch.get('tipo')?.value == 'Executiva'"
+                (selectionChange)="formSearchService.changeType($event, 'Executiva')">Executiva</mat-chip-option>
+            </mat-chip-listbox>
         </div>
     </mat-dialog-content>
     <mat-dialog-actions>
-        <button mat-button mat-dialog-close>Close</button>
+        <button color="primary" mat-button mat-dialog-close>Buscar</button>
     </mat-dialog-actions>
 </section>
