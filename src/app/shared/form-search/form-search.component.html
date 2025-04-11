@@ -14,21 +14,27 @@
             </mat-button-toggle-group>
             <mat-chip (click)="formSearchService.openDialog()">
                 <div class="inner">
-                  <mat-icon>check</mat-icon> {{formSearchService.getPassengersDescription()}}
+                    <mat-icon>check</mat-icon> {{formSearchService.getPassengersDescription()}}
                 </div>
-              </mat-chip>
-              <mat-chip (click)="formSearchService.openDialog()">
+            </mat-chip>
+            <mat-chip (click)="formSearchService.openDialog()">
                 <div class="inner">
-                  <mat-icon>check</mat-icon> {{formSearchService.getControl('type').value}}
+                    <mat-icon>check</mat-icon> {{formSearchService.getControl('type').value}}
                 </div>
-              </mat-chip>
+            </mat-chip>
         </div>
         <div class="flex-container">
-            <app-dropdown-state label="Origem" matPrefix="flight_takeoff" [control]="formSearchService.getControl('origin')"></app-dropdown-state>
-            <button mat-icon-button  (click)="formSearchService.switchDestiny()">
+            <div class="drop-container">
+                <app-dropdown-state label="Origem" matPrefix="flight_takeoff"
+                    [control]="formSearchService.getControl('origin')" placeholder="Origem"></app-dropdown-state>
+            </div>
+            <button mat-icon-button (click)="formSearchService.switchDestiny()">
                 <mat-icon>sync_alt</mat-icon>
             </button>
-            <app-dropdown-state [label]="'Destino'" matPrefix="flight_land" [control]="formSearchService.getControl('destination')"></app-dropdown-state>
+            <div class="drop-container">
+                <app-dropdown-state [label]="'Destino'" matPrefix="flight_land"
+                    [control]="formSearchService.getControl('destination')" placeholder="Destino"></app-dropdown-state>
+            </div>
             <mat-form-field class="input-container" appearance="outline">
                 <mat-label>Data de ida</mat-label>
                 <input matInput [matDatepicker]="ida">

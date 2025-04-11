@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable, startWith, map  } from 'rxjs';
+import { Observable, startWith, map } from 'rxjs';
 import { StateService } from 'src/app/core/services/state.service';
 import { State } from 'src/app/core/types/types';
 
@@ -16,6 +16,7 @@ export class DropdownStateComponent implements OnInit {
   states: State[] = [];
   filteredOptions$?: Observable<State[]>;
   @Input() control!: FormControl;
+  @Input() placeholder: string = '';
 
   constructor(private stateService: StateService) {
 
@@ -24,8 +25,7 @@ export class DropdownStateComponent implements OnInit {
   ngOnInit(): void {
     this.stateService.list()
       .subscribe(dados => {
-        this.states = dados
-        console.log(this.states)
+        this.states = dados;
       })
     this.filteredOptions$ = this.control.valueChanges.pipe(
       startWith(''),
@@ -34,11 +34,15 @@ export class DropdownStateComponent implements OnInit {
   }
 
 
-  filtrarUfs(value: string): State[] {
-    const valorFiltrado = value?.toLowerCase();
+  filtrarUfs(value: string | State): State[] {
+    const valorFiltrado = typeof value === 'string' ? value : value.nome;
     const result = this.states.filter(
       state => state.nome.toLowerCase().includes(valorFiltrado)
     )
     return result
+  }
+
+  displayFn(state: State) {
+    return state && state.nome ? state.nome : '';
   }
 }

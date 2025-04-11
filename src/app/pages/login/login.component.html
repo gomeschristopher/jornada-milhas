@@ -1,0 +1,37 @@
+<app-banner src="assets/imagens/banner-login.png" alt="Barco" />
+<section class="login-component">
+    <mat-card class="login">
+        <div class="image-container">
+            <figure>
+                <img src="assets/imagens/simbolo-bussola.png" alt="Bussola" />
+            </figure>
+        </div>
+        <div class="form-container">
+            <mat-card-header>
+                <mat-card-title class="title">Login</mat-card-title>
+            </mat-card-header>
+            <form [formGroup]="loginForm">
+                <mat-card-content>
+                    <mat-form-field appearance="outline">
+                        <mat-label>E-mail</mat-label>
+                        <input matInput formControlName="email" type="email" placeholder="Digite seu e-mail" />
+                        <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">E-mail obrigatorio</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Senha</mat-label>
+                        <input matInput type="password" formControlName="password" placeholder="Digite sua senha" />
+                        <mat-error *ngIf="loginForm.get('password')?.errors?.['required']">Senha obrigatoria</mat-error>
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-flat-button color="primary" (click)="login()" [disabled]="loginForm.invalid">ACESSAR MINHA CONTA</button>
+                    <p>
+                        Ainda não possui conta?
+                        <a><strong>Clique aqui para se cadastrar</strong></a>
+                    </p>
+                </mat-card-actions>
+            </form>
+
+        </div>
+    </mat-card>
+</section>

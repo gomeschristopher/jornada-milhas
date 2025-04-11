@@ -1,0 +1,128 @@
+<app-container>
+    <mat-card>
+        <form [formGroup]="userForm">
+            <mat-card-title>
+                {{ profileComponent ? 'Atualizar Cadastro' : 'Criar Cadastro' }}
+            </mat-card-title>
+            <section>
+                <div class="profileActions" *ngIf="profileComponent">
+                    <h2>Dados pessoais</h2>
+                    <button mat-stroked-button color="primary" (click)="logout()">
+                        <mat-icon>logout</mat-icon>
+                        DESLOGAR
+                    </button>
+                </div>
+            </section>
+            <mat-card-content>
+                <div class="grid-container">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Nome</mat-label>
+                        <input matInput formControlName="name" placeholder="Nome">
+                        <mat-error *ngIf="userForm.get('name')?.errors">Nome é obrigatório</mat-error>
+                    </mat-form-field>
+                    <div class="grid-item">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Data de Nascimento</mat-label>
+                            <input matInput formControlName="birth" [matDatepicker]="birth"
+                                placeholder="Data de Nascimento">
+                            <mat-datepicker-toggle matSuffix [for]="birth"></mat-datepicker-toggle>
+                            <mat-datepicker #birth></mat-datepicker>
+                            <mat-error *ngIf="userForm.get('birth')?.errors?.['required']">
+                                Data de Nascimento é obrigatória
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>CPF</mat-label>
+                            <input matInput formControlName="documentId" placeholder="Digite seu CPF">
+                            <mat-error *ngIf="userForm.get('documentId')?.errors">CPF é obrigatório</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Cidade</mat-label>
+                            <input matInput formControlName="city" placeholder="Digite sua cidade">
+                            <mat-error *ngIf="userForm.get('city')?.errors">Cidade é obrigatória</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="grid-item">
+                        <div class="radio-group">
+                            <label>Gênero</label>
+                            <mat-radio-group formControlName="gender" color="primary">
+                                <mat-radio-button value="feminino">Feminino</mat-radio-button>
+                                <mat-radio-button value="masculino">Masculino</mat-radio-button>
+                                <mat-radio-button value="outro">Não informar</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Telefone</mat-label>
+                            <input matInput formControlName="phone" placeholder="+XX XXXX-XXXX">
+                            <mat-error *ngIf="userForm.get('phone')?.errors">Telefone é obrigatório</mat-error>
+                        </mat-form-field>
+                        <app-dropdown-state label="Estado" placeholder="Estado" [control]="stateControl">
+                        </app-dropdown-state>
+                        <mat-error *ngIf="stateControl?.errors && stateControl?.touched">Estado é
+                            obrigatório</mat-error>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-divider *ngIf="profileComponent"></mat-divider>
+            <div class="profileAccess" *ngIf="profileComponent">
+                <h2>Dados de acesso</h2>
+            </div>
+            <mat-card-content>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <mat-form-field appearance="outline">
+                            <mat-label>E-mail</mat-label>
+                            <input matInput formControlName="email" type="email" placeholder="Digite seu e-mail">
+                            <mat-error *ngIf="userForm.get('email')?.errors?.['required']">E-mail é
+                                obrigatório</mat-error>
+                            <mat-error *ngIf="userForm.get('email')?.errors?.['email']">E-mail inválido</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Senha</mat-label>
+                            <input matInput formControlName="password" type="password" placeholder="Digite sua senha">
+                            <mat-error *ngIf="userForm.get('password')?.errors?.['required']">Senha é
+                                obrigatória</mat-error>
+                            <mat-error *ngIf="userForm.get('senha')?.errors?.['minlength']">Senha deve ter pelo
+                                menos 3 caracteres</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="grid-item">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Confirmar E-mail</mat-label>
+                            <input matInput formControlName="confirmEmail" placeholder="Digite seu e-mail novamente">
+                            <mat-error *ngIf="userForm.get('confirmEmail')?.errors?.['required']">Confirmação de
+                                E-mail é obrigatória</mat-error>
+                            <mat-error *ngIf="userForm.get('confirmEmail')?.errors?.['email']">E-mail
+                                inválido</mat-error>
+                            <mat-error *ngIf="userForm.get('confirmEmail')?.errors?.['equalTo']">
+                                Emails precisam ser iguais</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Confirmar Senha</mat-label>
+                            <input matInput formControlName="confirmPassword" type="password"
+                                placeholder="Repita sua senha">
+                            <mat-error *ngIf="userForm.get('confirmPassword')?.errors?.['required']">Confirmação de
+                                Senha é obrigatória</mat-error>
+                            <mat-error *ngIf="userForm.get('confirmPassword')?.errors?.['equalTo']">
+                                Senhas precisam ser iguais</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <mat-checkbox *ngIf="!profileComponent" formControlName="acceptTerms" color="primary"
+                    class="full-width">Li e aceito os termos
+                    e
+                    condições deste cadastro *</mat-checkbox>
+                <mat-error
+                    *ngIf="!profileComponent && userForm.get('acceptTerms')?.invalid && userForm.get('acceptTerms')?.dirty">
+                    Você precisa aceitar os termos e condições para efetuar o cadastro
+                </mat-error>
+            </mat-card-content>
+            <mat-card-actions class="full-width">
+                <button [class.profile-button]="profileComponent" mat-flat-button [disabled]="userForm.invalid"
+                    color="primary" (click)="submit()">
+                    {{ profileComponent ? 'Atualizar' : 'Cadastrar' }}
+                </button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</app-container>
