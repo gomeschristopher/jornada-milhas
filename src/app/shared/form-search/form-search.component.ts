@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../modal/modal.component';
+import { Component, EventEmitter, Output } from '@angular/core';
+
 import { FormSearchService } from 'src/app/core/services/form-search.service';
 
 @Component({
@@ -9,11 +8,19 @@ import { FormSearchService } from 'src/app/core/services/form-search.service';
   styleUrls: ['./form-search.component.scss']
 })
 export class FormSearchComponent {
+  @Output() makeSearch = new EventEmitter();
+
   constructor(
     public formSearchService: FormSearchService
   ) { }
 
   search() {
-    console.log(this.formSearchService.formSearch.value);
+    if (this.formSearchService.formIsValid) {
+      const formSearchValue = this.formSearchService.getSearchData();
+      
+      this.makeSearch.emit(formSearchValue);
+    } else {
+      alert('Formulario precisa ser preenchido');
+    }
   }
 }

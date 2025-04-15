@@ -1,0 +1,25 @@
+.search-page {
+    app-banner {
+        margin-bottom: 40px;
+    }
+
+    .content {
+        display: flex;
+        gap: 24px;
+    }
+
+    .passages {
+        flex-grow: 1;
+
+        .highlights {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 32px;
+
+            app-card {
+                flex-grow: 1;
+            }
+        }
+    }
+}

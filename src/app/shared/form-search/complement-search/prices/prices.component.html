@@ -1,0 +1,17 @@
+<section class="prices">
+    <app-label texto="Preço" />
+    <div class="labels">
+      <div class="label-container">
+        <label for="preco-minimo" class="name-label">De</label>
+        <p>{{ passageService.minPrice | currency:'BRL' }}</p>
+      </div>
+      <div class="label-container">
+        <label for="preco-maximo">Até</label>
+        <p>{{ passageService.maxPrice | currency:'BRL' }}</p>
+      </div>
+    </div>
+    <mat-slider [min]="passageService.minPrice" [max]="passageService.maxPrice">
+      <input id="preco-minimo" matSliderStartThumb [formControl]="minPrice">
+      <input id="preco-maximo" matSliderEndThumb [formControl]="maxPrice">
+    </mat-slider>
+  </section>

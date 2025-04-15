@@ -1,0 +1,17 @@
+<form [formGroup]="formSearchService.formSearch" class="complement-search" (ngSubmit)="search()">
+    <app-card>
+        <div class="header">
+            <h4>Filtro</h4>
+            <button mat-stroked-button type="button" (click)="clear()">
+                <mat-icon>backspace</mat-icon>
+                Limpar
+            </button>
+        </div>
+        <app-stops />
+        <hr>
+        <app-companies />
+        <hr>
+        <app-prices />
+        <button mat-flat-button color="primary">Aplicar</button>
+    </app-card>
+  </form>

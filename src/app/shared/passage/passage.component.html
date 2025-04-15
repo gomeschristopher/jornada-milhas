@@ -1,0 +1,68 @@
+<mat-card class="passage">
+    <mat-card-content>
+        <div class="inside-content">
+            <div class="dados-voo">
+                <p class="round-trip">
+                    {{ roundTripText }}
+                </p>
+                <hr>
+                <div class="destination-origin">
+                    <div class="group">
+                        <label>Origem</label>
+                        <p class="box">
+                            {{ passage.origem.nome }} ({{ passage.origem.sigla }})
+                        </p>
+                    </div>
+                    <div class="group">
+                        <label>Destino</label>
+                        <p class="box">
+                            {{ passage.destino.nome }} ({{ passage.destino.sigla }})
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="dates">
+                    <div class="group">
+                        <label>Ida</label>
+                        <p class="box">
+                            {{ passage.dataIda | date:'dd/MM' }}
+                        </p>
+                    </div>
+                    <div class="group" *ngIf="passage.dataVolta">
+                        <label>Volta</label>
+                        <p class="box">
+                            {{ passage.dataVolta | date:'dd/MM' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="budget">
+                <div class="price">
+                    {{ passage.total | currency:'BRL' }}
+                </div>
+                <div class="details">
+                    <ul *ngFor="let orcamento of passage.orcamento">
+                        <li>
+                            <p>{{ orcamento.descricao }}</p>
+                            <p>{{ orcamento.preco | currency:'BRL' }}</p>
+                        </li>
+                        <li>
+                            <p>Taxa de embarque</p>
+                            <p>{{ orcamento.taxaEmbarque | currency:'BRL' }}</p>
+                        </li>
+                        <li class="total">
+                            <p>Total</p>
+                            <p>{{ orcamento.total | currency:'BRL' }}</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="info">
+                    <p>10% de desconto no Pix</p>
+                    <p>ou</p>
+                    <p>12x no cartão de crédito</p>
+                </div>
+                <button mat-flat-button color="primary">Comprar</button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

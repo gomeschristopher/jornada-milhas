@@ -1,0 +1,11 @@
+<section class="stops">
+  <app-label texto="Paradas" />
+  <div class="checkbox-group">
+    <p *ngFor="let option of options">
+      <mat-checkbox color="primary" [value]="option.value" (change)="changeStop(option, $event.checked)"
+        [checked]="selectedStop(option)" [disabled]="includeStop(option)" [indeterminate]="includeStop(option)">
+        {{ option.display }}
+      </mat-checkbox>
+    </p>
+  </div>
+</section>

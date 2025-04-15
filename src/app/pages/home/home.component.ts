@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { PromotionService } from 'src/app/core/services/promotion.service';
 import { TestimonialsService } from 'src/app/core/services/testimonials.service';
 import { Promotion, Testimonial } from 'src/app/core/types/types';
@@ -14,6 +16,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private promotionService: PromotionService,
     private testimonialsService: TestimonialsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,5 +35,9 @@ export class HomeComponent implements OnInit {
         this.testimonials = res;
       }
     )
+  }
+
+  navigateToSearch(event: any) {
+    this.router.navigate(['/busca']);
   }
 } 

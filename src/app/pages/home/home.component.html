@@ -1,7 +1,7 @@
 <app-banner src="assets/imagens/banner-homepage.png" alt="Baner"></app-banner>
 <app-container>
     <h2>Promoções</h2>
-    <app-form-search></app-form-search>
+    <app-form-search (makeSearch)="navigateToSearch($event)"></app-form-search>
     <div class="card-wrapper">
         <app-card-search *ngFor="let promotion of promotions" [promotion]="promotion"></app-card-search>
     </div>

@@ -17,6 +17,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatSliderModule} from '@angular/material/slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +40,14 @@ import { UserFormComponent } from './shared/user-form/user-form.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { SearchComponent } from './pages/search/search.component';
+import { PassageComponent } from './shared/passage/passage.component';
+import { ComplementSearchComponent } from './shared/form-search/complement-search/complement-search.component';
+import { LabelComponent } from './shared/form-search/complement-search/label/label.component';
+import { StopsComponent } from './shared/form-search/complement-search/stops/stops.component';
+import { PricesComponent } from './shared/form-search/complement-search/prices/prices.component';
+import { CompaniesComponent } from './shared/form-search/complement-search/companies/companies.component';
+import { FeaturedPassageComponent } from './pages/search/featured-passage/featured-passage.component';
 
 
 
@@ -61,7 +70,15 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     LoginComponent,
     UserFormComponent,
     SignupComponent,
-    ProfileComponent
+    ProfileComponent,
+    SearchComponent,
+    PassageComponent,
+    ComplementSearchComponent,
+    LabelComponent,
+    StopsComponent,
+    PricesComponent,
+    CompaniesComponent,
+    FeaturedPassageComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +100,8 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     MatAutocompleteModule,
     MatDividerModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSliderModule
   ],
   providers: [
     {
