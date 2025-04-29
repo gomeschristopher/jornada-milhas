@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserFormService } from 'src/app/core/services/user-form.service';
 import { State } from 'src/app/core/types/types';
 import { FormValidations } from '../form-validations';
-import { UserService } from 'src/app/core/services/user.service';
+import { UserService } from 'src/app/auth/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({

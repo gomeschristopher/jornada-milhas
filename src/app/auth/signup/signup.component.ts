@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SignupService } from 'src/app/core/services/signup.service';
+import { SignupService } from 'src/app/auth/services/signup.service';
 import { UserFormService } from 'src/app/core/services/user-form.service';
 import { User } from 'src/app/core/types/types';
 

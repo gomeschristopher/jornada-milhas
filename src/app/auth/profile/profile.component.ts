@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TokenService } from 'src/app/core/services/token.service';
+import { TokenService } from 'src/app/auth/services/token.service';
 import { UserFormService } from 'src/app/core/services/user-form.service';
-import { UserService } from 'src/app/core/services/user.service';
+import { UserService } from 'src/app/auth/services/user.service';
 import { User } from 'src/app/core/types/types';
 
 @Component({

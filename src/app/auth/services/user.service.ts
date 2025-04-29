@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 
 import { TokenService } from './token.service';
-import { State, User } from '../types/types';
+import { State, User } from '../../core/types/types';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
