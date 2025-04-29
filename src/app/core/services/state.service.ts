@@ -27,6 +27,6 @@ export class StateService {
   }
 
   private requestStates(): Observable<State[]> {
-    return this.http.get<State[]>(`${this.apiUrl}/estados`);
+    return this.http.get<State[]>(`${this.apiUrl}/estadoss`);
   }
 }

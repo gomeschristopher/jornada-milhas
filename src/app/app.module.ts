@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { ErrorModule } from './core/error/error.module';
+import { ErrorsInterceptor } from './core/error/errors.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,11 @@ import { ErrorModule } from './core/error/error.module';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorsInterceptor,
       multi: true
     }
   ],
